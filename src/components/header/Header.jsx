@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Container, Row, Button } from "reactstrap";
 import { NavLink, Link } from "react-router-dom";
 import logo from "../../assets/images/logo.png";
 import "./header.css";
+
 const nav__links = [
   {
     path: "/home",
@@ -18,8 +19,28 @@ const nav__links = [
   },
 ];
 const Header = () => {
+  const headerRef = useRef(null);
+
+  const stickyHeaderFunc = () => {
+    window.addEventListener("scroll", () => {
+      if (
+        document.body.scrollTop > 80 ||
+        document.documentElement.scrollTop > 80
+      ) {
+        headerRef.current.classList.add("sticky__header");
+      } else {
+        headerRef.current.classList.remove("sticky__header");
+      }
+    });
+  };
+
+  useEffect(() => {
+    stickyHeaderFunc();
+
+    return window.removeEventListener("scroll", stickyHeaderFunc);
+  });
   return (
-    <header className="header">
+    <header className="header" ref={headerRef}>
       <Container>
         <Row>
           <div className="nav__wrapper d-flex align-items-center justify-content-between">
@@ -49,10 +70,10 @@ const Header = () => {
             <div className="nav_right d-flex align-items-center gap-4">
               <div className="nav_btn d-flex align-items-center gap-4">
                 <Button className="btn secondary__btn">
-                  <Link to="login">Login</Link>
+                  <Link to="/login">Login</Link>
                 </Button>
                 <Button className="btn primary__btn">
-                  <Link to="register">Register</Link>
+                  <Link to="/admin-signup">Register</Link>
                 </Button>
               </div>
               <span className="mobile__menu"></span>

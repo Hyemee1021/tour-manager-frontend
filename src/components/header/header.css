@@ -12,16 +12,32 @@
   height: 80px;
   line-height: 80px;
 }
-
-.logo img {
-  width: 35%;
+a {
+  color: var(--heading-color) !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease-in-out;
 }
+
+a:hover {
+  transition: all 0.2s ease-in-out;
+  color: var(--secondary-color) !important;
+}
+
+.nav__item a.active__link {
+  color: var(--secondary-color);
+}
+.logo img {
+  width: 30%;
+}
+
 .menu {
   margin-bottom: 0;
 }
-.nav__item a {
-  text-decoration: none;
+
+.menu .nav__item a {
+  text-decoration: none !important;
   color: var(--heading-color);
+  font-weight: 500;
   font-size: 1.1rem;
 }
 
@@ -43,10 +59,10 @@
   width: 100%;
   height: 80px;
   line-height: 80px;
-  background-color: #fff;
+  background: #fff;
   position: sticky;
   top: 0;
   left: 0;
   box-shadow: 3px 3px 8px -3px #ddd;
-  z-index: 9999;
+  z-index: 999;
 }
