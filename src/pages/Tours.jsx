@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import CommonSection from "../shared/CommonSection";
 import { Container, Row, Col } from "react-bootstrap";
 import "../styles/tour.css";
-import TourCard from ".././shared/TourCard";
-import SearchBar from ".././shared/SearchBar";
-import Newsletter from ".././shared/Newsletter";
+import TourCard from "../shared/TourCard";
+import SearchBar from "../shared/SearchBar";
+import Newsletter from "../shared/Newsletter";
 import tourData from "../assets/data/tours";
-const Tour = () => {
+const Tours = () => {
   const [pageCount, setPagecount] = useState(0);
   const [page, setPage] = useState(0);
 
@@ -56,4 +56,4 @@ const Tour = () => {
   );
 };
 
-export default Tour;
+export default Tours;

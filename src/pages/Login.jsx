@@ -1,110 +1,79 @@
-import React, { useEffect, useRef } from "react";
-// import { MainLayout } from "../../components/layout/MainLayout";
-import { Button, Form } from "react-bootstrap";
-import { CustomInput } from "../components/custom-input/CustomInput";
-import { toast } from "react-toastify";
-import { loginUser } from "../helpers/axiosHelper";
-// import { autoLogin, getUserAction } from "./userAction";
-// import { useDispatch, useSelector } from "react-redux";
-import { useLocation, useNavigate } from "react-router-dom";
+import React, { useState, useContext } from "react";
+
+import { Container, Row, Col, Form, FormGroup, Button } from "reactstrap";
+import { Link, useNavigate } from "react-router-dom";
+import "../styles/login.css";
+
+import loginImg from "../assets/images/login.png";
+import userIcon from "../assets/images/user.png";
 
 const Login = () => {
-  const navigate = useNavigate();
-  const emailRef = useRef("");
-  const passwordRef = useRef("");
-  // const dispatch = useDispatch();
-  // const navigate = useNavigate();
-  // // const location = useLocation();
+  const [credentials, setCredentials] = useState({
+    email: undefined,
+    password: undefined,
+  });
 
-  // console.log(location);
-  // const { user } = useSelector((state) => state.userInfo);
+  const handleChange = (e) => {
+    const { id, value } = e.target;
 
-  // const fromLocation =
-  //   location?.state?.from?.location?.pathname || "/dashboard";
-
-  // useEffect(() => {
-  //   // redirect to  dashboard
-  //   user?._id && navigate(fromLocation);
-
-  //   !user?._id && dispatch(autoLogin());
-  // }, [user?._id, navigate, dispatch, fromLocation]);
-
-  const handleOnSubmit = async (e) => {
-    e.preventDefault();
-
-    const email = emailRef.current.value;
-    const password = passwordRef.current.value;
-
-    console.log(email, password);
-    if (!email || !password) {
-      return toast.error("Both input field must be filled");
-    }
-
-    /// axios
-
-    const { status, message, jwts } = await loginUser({ email, password });
-
-    toast[status](message);
-
-    if (status === "success") {
-      const { accessJWT, refreshJWT } = jwts;
-      sessionStorage.setItem("accessJWT", accessJWT);
-      localStorage.setItem("refreshJWT", refreshJWT);
-      //   //fetch user info and redirect to dashboard
-      //   dispatch(getUserAction());
-      setTimeout(() => {
-        navigate("/");
-      }, 1000);
-      return;
-    }
+    setCredentials((prev) => ({ ...prev, [id]: value }));
   };
 
-  const inputs = [
-    {
-      label: "Email",
-      name: "email",
-      placeholder: "sam@email.com",
-      type: "email",
-      required: true,
-      passRef: emailRef,
-    },
+  const handleClick = async (e) => {
+    e.preventDefault();
+  };
 
-    {
-      label: "Password",
-      name: "password",
-      placeholder: "******",
-      type: "password",
-      required: true,
-      passRef: passwordRef,
-    },
-  ];
   return (
-    <div className="bg-background2">
-      <div className="bg-white p-3 text-dark rounded ">
-        <Form
-          onSubmit={handleOnSubmit}
-          className="form-center border shadow-lg p-4 rounded mt-5"
-        >
-          <h2 className="text-center">Welcome login </h2>
-          <hr />
-          {inputs.map((item, i) => (
-            <CustomInput key={i} {...item} />
-          ))}
+    <section>
+      <Container>
+        <Row>
+          <Col lg="8" className="m-auto">
+            <div className="login__container d-flex justify-content-between">
+              <div className="login__img">
+                <img src={loginImg} alt="" />
+              </div>
 
-          <div className="d-grid mt-2">
-            <Button variant="primary" type="submit">
-              {" "}
-              Login
-            </Button>
-          </div>
+              <div className="login__form">
+                <div className="user">
+                  <img src={userIcon} alt="" />
+                </div>
+                <h2>Login</h2>
 
-          <div className="text-end mt-5">
-            New here?
-            <a href="/signup">Signup Now!</a>
-          </div>
-        </Form>
-      </div>
-    </div>
+                <Form onSubmit={handleClick}>
+                  <FormGroup>
+                    <input
+                      type="email"
+                      placeholder="Email"
+                      required
+                      id="email"
+                      onChange={handleChange}
+                    />
+                  </FormGroup>
+                  <FormGroup>
+                    <input
+                      type="password"
+                      placeholder="Password"
+                      required
+                      id="password"
+                      onChange={handleChange}
+                    />
+                  </FormGroup>
+                  <Button
+                    className="btn secondary__btn auth__btn"
+                    type="submit"
+                  >
+                    Login
+                  </Button>
+                </Form>
+                <p>
+                  Don't have an account? <Link to="/register">Create</Link>
+                </p>
+              </div>
+            </div>
+          </Col>
+        </Row>
+      </Container>
+    </section>
   );
 };
 
