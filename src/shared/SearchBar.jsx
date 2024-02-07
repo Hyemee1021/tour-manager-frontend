@@ -1,12 +1,17 @@
 import React, { useRef } from "react";
 import "./search-bar.css";
 import { Col, Form, FormGroup } from "reactstrap";
+import { BASE_URL } from "../utils/config";
+
+import { useNavigate } from "react-router-dom";
+
 const SearchBar = () => {
   const locationRef = useRef("");
 
   const maxGroupSizeRef = useRef(0);
+  const navigate = useNavigate();
 
-  const searchHandler = () => {
+  const searchHandler = async () => {
     const location = locationRef.current.value;
 
     const maxGroupSize = maxGroupSizeRef.current.value;
@@ -14,6 +19,18 @@ const SearchBar = () => {
     if (location === "" || maxGroupSize === "") {
       return alert("All filds are required.");
     }
+
+    const res = await fetch(
+      `${BASE_URL}/tours/search/getTourBySearch?city=${location}&maxGroupSize=${maxGroupSize}`
+    );
+
+    if (!res.ok) alert("Something went wrong");
+
+    const result = await res.json();
+
+    navigate(`/tours/search?city=${location}&maxGroupSize=${maxGroupSize}`, {
+      state: result.data,
+    });
   };
   return (
     <Col lg="12">
