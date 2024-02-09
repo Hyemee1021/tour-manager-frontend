@@ -7,20 +7,44 @@ import "../styles/login.css";
 import registerImg from "../assets/images/register.png";
 import userIcon from "../assets/images/user.png";
 
+import { AuthContext } from "./../context/AuthContext";
+import { BASE_URL } from "./../utils/config";
+
 const Register = () => {
   const [credentials, setCredentials] = useState({
+    userName: undefined,
     email: undefined,
     password: undefined,
   });
 
-  const handleChange = (e) => {
-    const { id, value } = e.target;
+  const { dispatch } = useContext(AuthContext);
+  const navigate = useNavigate();
 
-    setCredentials((prev) => ({ ...prev, [id]: value }));
+  const handleChange = (e) => {
+    setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
 
   const handleClick = async (e) => {
     e.preventDefault();
+
+    try {
+      const res = await fetch(`${BASE_URL}/auth/register`, {
+        method: "post",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(credentials),
+      });
+
+      const result = await res.json();
+
+      if (!res.ok) alert(result.message);
+
+      dispatch({ type: "REGISTER_SUCCESS" });
+      navigate("/login");
+    } catch (err) {
+      alert(err.message);
+    }
   };
 
   return (
@@ -40,6 +64,15 @@ const Register = () => {
                 <h2>Register</h2>
 
                 <Form onSubmit={handleClick}>
+                  <FormGroup>
+                    <input
+                      type="text"
+                      placeholder="Username"
+                      required
+                      id="username"
+                      onChange={handleChange}
+                    />
+                  </FormGroup>
                   <FormGroup>
                     <input
                       type="email"
@@ -62,7 +95,7 @@ const Register = () => {
                     className="btn secondary__btn auth__btn"
                     type="submit"
                   >
-                    Register
+                    Create account
                   </Button>
                 </Form>
                 <p>
