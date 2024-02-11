@@ -53,12 +53,15 @@ const TourDetails = () => {
         rating: tourRating,
       };
 
+      const token = localStorage.getItem("token");
+      console.log(token);
+
       const res = await fetch(`${BASE_URL}/review/${id}`, {
         method: "post",
         headers: {
           "content-type": "application/json",
         },
-        credentials: "include",
+
         body: JSON.stringify(reviewObj),
       });
 
@@ -178,7 +181,7 @@ const TourDetails = () => {
                                 <p>
                                   {new Date(
                                     review.createdAt
-                                  ).toLocaleDateString("en-US", options)}
+                                  ).toLocaleDateString("en-AU", options)}
                                 </p>
                               </div>
                               <span className="d-flex align-items-center">

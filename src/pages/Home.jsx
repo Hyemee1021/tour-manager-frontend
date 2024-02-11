@@ -17,6 +17,7 @@ import Newsletter from "../shared/Newsletter";
 const Home = () => {
   return (
     <>
+      {/* ========== hero section start =========== */}
       <section>
         <Container>
           <Row>
@@ -49,30 +50,19 @@ const Home = () => {
               </div>
             </Col>
             <Col lg="2">
-              <div className="hero__img-box mt-">
+              <div className="hero__img-box mt-5">
                 <img src={heroImg02} alt="" />
               </div>
             </Col>
+
             {/* search bar */}
             <SearchBar />
           </Row>
         </Container>
       </section>
 
-      {/* hero section start */}
-      <section>
-        <Container>
-          <Row>
-            <Col lg="3">
-              <h5 className="services__subtitle">What we serve</h5>
-              <h2 className="services__title">We offer our best services</h2>
-            </Col>
-            <ServiceList />
-          </Row>
-        </Container>
-      </section>
+      {/* ============ featured tour section start ============ */}
 
-      {/* featured tour section start  */}
       <section>
         <Container>
           <Row>
@@ -85,7 +75,8 @@ const Home = () => {
         </Container>
       </section>
 
-      {/* experience */}
+      {/* ============ experience section start ============= */}
+
       <section>
         <Container>
           <Row>

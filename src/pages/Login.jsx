@@ -44,6 +44,8 @@ const Login = () => {
 
       console.log(result.data);
 
+      localStorage.setItem("token", result.token);
+      console.log(result.token);
       dispatch({ type: "LOGIN_SUCCESS", payload: result.data });
       navigate("/");
     } catch (error) {

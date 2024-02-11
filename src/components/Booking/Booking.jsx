@@ -1,17 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Button, Form, FormGroup, ListGroup, ListGroupItem } from "reactstrap";
 import "./booking.css";
 
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
+import { BASE_URL } from "../../utils/config";
 const Booking = ({ tour, avgRating }) => {
-  const { price, reviews } = tour;
+  const { price, reviews, title } = tour;
 
   const navigate = useNavigate();
 
-  const [credentials, setCredentials] = useState({
-    userId: "01",
-    userEmail: "example@gamil.com",
+  const { user } = useContext(AuthContext);
 
+  const [booking, setBooking] = useState({
+    userId: user && user?._id,
+    userEmail: user && user?.email,
+    tourName: title,
     fullName: "",
     phone: "",
     guestSize: 1,
@@ -20,17 +24,41 @@ const Booking = ({ tour, avgRating }) => {
 
   const serviceFee = 10;
   const totalAmount =
-    Number(price) * Number(credentials.guestSize) + Number(serviceFee);
+    Number(price) * Number(booking.guestSize) + Number(serviceFee);
 
   const handleOnChange = (e) => {
     const { id, value } = e.target;
-    setCredentials((prev) => ({ ...prev, [id]: value }));
+    setBooking((prev) => ({ ...prev, [id]: value }));
   };
 
-  const handleClick = (e) => {
+  const handleClick = async (e) => {
     e.preventDefault();
 
-    navigate("/thank-you");
+    try {
+      if (!user || user === undefined || user === null) {
+        return alert(`Please sign in`);
+      }
+
+      const token = localStorage.getItem("token");
+      console.log(token);
+
+      const res = await fetch(`${BASE_URL}/booking`, {
+        method: "post",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(booking),
+      });
+
+      const result = await res.json();
+
+      if (!res.ok) {
+        return alert(result.message);
+      }
+      navigate("/thank-you");
+    } catch (error) {
+      alert(error.message);
+    }
   };
   return (
     <div className="booking">
