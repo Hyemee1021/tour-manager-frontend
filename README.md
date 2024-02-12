@@ -1,70 +1,43 @@
-# Getting Started with Create React App
+===Table of Contents==
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Introduction
+Features
+Installation
+Usage
+Contributing
+License
 
-## Available Scripts
+=Introduction=
 
-In the project directory, you can run:
+This project is part of a tour management system that aims to streamline the process of organizing and managing tours. The frontend is built using React and communicates with the backend server to perform CRUD operations on tour data.
 
-### `npm start`
+=Features=
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+User Authentication: Secure user authentication and authorization.
+Tour Management: Create, read, update, and delete tours.
+Interactive Interface: Intuitive user interface for easy navigation and interaction.
+Responsive Design: Ensures a seamless experience across various devices and screen sizes.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+=Installation=
 
-### `npm test`
+To run the Tour Manager Frontend locally, follow these steps:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Clone this repository: git clone https://github.com/Hyemee1021/tour-manager-frontend.git
+Navigate to the project directory: cd tour-manager-frontend
+Install dependencies: npm install
+Start the development server: npm start
 
-### `npm run build`
+=Usage=
+After following the installation steps, you can access the application by visiting http://localhost:3000 in your web browser. From there, you can explore the different features of the Tour Manager Frontend.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+=Contributing=
+Contributions are welcome! If you'd like to contribute to this project, please follow these guidelines:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Fork the repository.
+Create your feature branch: git checkout -b feature-name.
+Commit your changes: git commit -am 'Add some feature'.
+Push to the branch: git push origin feature-name.
+Submit a pull request.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+=License=
+This project is licensed under the MIT License.
