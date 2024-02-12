@@ -4,7 +4,7 @@
   --heading-color: #0b2727;
   --text-color: #6e7074;
   --font-name: "Montserrat", sans-serif;
-  --subtitle-font-name: "Island Moments", cursive;
+  --subtitle-font-name: "Noto Serif", serif;
 }
 
 a {
@@ -88,7 +88,7 @@ a:hover {
     position: absolute;
     top: 0;
     right: 0;
-    width: calc(100%-75%);
+    width: calc(100% - 75%) !important;
     height: 100%;
     background: #fff;
     flex-direction: column;
@@ -111,6 +111,6 @@ a:hover {
     width: 45%;
   }
   .menu {
-    width: calc(100%-50%);
+    width: calc(100% - 50%) !important;
   }
 }

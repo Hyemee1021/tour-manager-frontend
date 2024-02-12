@@ -3,7 +3,7 @@ import "./footer.css";
 
 import { Container, Row, Col, ListGroup, ListGroupItem } from "reactstrap";
 import { Link } from "react-router-dom";
-import logo from "../../assets/images/logo.png";
+import logo from "../../assets/images/logo.jpg";
 
 const quick__links = [
   {
@@ -117,7 +117,7 @@ const Footer = () => {
                   Email:
                 </h6>
 
-                <p className="mb-0">dev.muhib01@gmail.com</p>
+                <p className="mb-0">hyemee1021@gmail.com</p>
               </ListGroupItem>
 
               <ListGroupItem className="ps-0 border-0 d-flex align-items-center gap-3">
@@ -128,7 +128,7 @@ const Footer = () => {
                   Phone:
                 </h6>
 
-                <p className="mb-0">+0123456789</p>
+                <p className="mb-0">0402-096-632</p>
               </ListGroupItem>
             </ListGroup>
           </Col>
